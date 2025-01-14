@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Database connection details
 $host = "localhost";        // Database host (usually localhost)
 $db_name = "task_management_db"; // Your database name
