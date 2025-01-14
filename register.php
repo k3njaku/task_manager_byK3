@@ -7,12 +7,12 @@ session_start();
 require 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $confim_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    $username = isset($_POST['username']) ? mysqli_real_escape_string($conn, $_POST['username']) : '';
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($conn, $_POST['email']) : '';
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : '';
+    $confirm_password = isset($_POST['confirm_password']) ? mysqli_real_escape_string($conn, $_POST['confirm_password']) : '';
 
-    if (empty($username) || empty($email) || empty($password) || empty($confim_password)) {
+    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
         echo "All fields are required.";
     } elseif ($password !== $confirm_password) {
         echo "Passwords do not match.";
